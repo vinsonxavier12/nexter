@@ -8,6 +8,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media screen and (max-width: 75em) {
+    html {
+      font-size: 50%; } }
 
 body {
   font-family: "Nunito", sans-serif;
@@ -19,6 +22,10 @@ body {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
+  @media screen and (max-width: 62.5em) {
+    .container {
+      grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+      grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; } }
 
 .heading-1, .heading-2, .heading-3, .heading-4, .btn {
   font-family: "Josefin Sans", sans-serif;
@@ -76,7 +83,15 @@ body {
 .sidebar {
   background-color: #c69963;
   grid-column: sidebar-start / sidebar-end;
-  grid-row: 1 / -1; }
+  grid-row: 1 / -1;
+  display: flex;
+  justify-content: center; }
+  @media screen and (max-width: 62.5em) {
+    .sidebar {
+      grid-row: unset;
+      grid-column: full-start / full-end;
+      justify-content: flex-end;
+      align-items: center; } }
 
 .nav-btn {
   width: 4.5rem;
@@ -85,7 +100,6 @@ body {
   border: unset;
   border-radius: unset;
   display: block;
-  margin: auto;
   margin-top: 4rem; }
   .nav-btn::before, .nav-btn::after {
     content: "";
@@ -97,6 +111,14 @@ body {
     translate: 0 -1.5rem; }
   .nav-btn::after {
     translate: 0 1.3rem; }
+  @media screen and (max-width: 62.5em) {
+    .nav-btn {
+      margin-top: unset;
+      margin-right: 3rem; }
+      .nav-btn::before {
+        translate: 0 -1.2rem; }
+      .nav-btn::after {
+        translate: 0 1rem; } }
 
 .header {
   background-color: #54483a;
@@ -108,8 +130,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
   row-gap: 1.5rem;
   justify-content: center; }
   .header__btn {
@@ -134,9 +156,11 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    align-items: center;
     gap: 2rem; }
     .header__seen-logos > img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       filter: brightness(70%); }
 
 .relators {
