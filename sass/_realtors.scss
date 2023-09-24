@@ -1,11 +1,16 @@
 .relators {
   background-color: $color-secondary;
   grid-column: col-start 7 / full-end;
+  padding: 3rem 0;
   display: grid;
   justify-content: center;
   align-content: center;
   justify-items: center;
   row-gap: 3rem;
+
+  @media screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
 
   &__list {
     display: grid;
@@ -13,6 +18,14 @@
     align-items: center;
     column-gap: 2rem;
     row-gap: 3.5rem;
+
+    @media screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(3, min-content max-content);
+    }
+
+    @media screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content;
+    }
   }
 
   &__img {
